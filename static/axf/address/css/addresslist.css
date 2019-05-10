@@ -1,0 +1,40 @@
+.address_list >  ul {
+
+    border: 0.2rem dashed lightgreen;
+    border-width: 0.1rem 0;
+    margin-bottom: 0.2rem;
+}
+.address_list ul > li {
+    padding-left: 0.3rem;
+    line-height: 1rem;
+    font-size: 0.5rem;
+}
+.set_default {
+    padding-right: 0.3rem;
+    line-height: 1rem;
+    font-size: 0.5rem;
+}
+.add_address{
+    padding-left: 2.3rem;
+    line-height: 1rem;
+    font-size: 0.75rem;
+    color: #985f0d;
+}
+.address_id{
+     display:inline-block;
+        line-height: 0.8rem;
+    font-size: 0.6rem;
+    color: #8a6d3b;
+}
+.set_default{
+    float: right;
+      line-height: 0.8rem;
+    font-size: 0.6rem;
+    color: #c7254e;
+}
+.default_address{
+    float: right;
+      line-height: 0.8rem;
+    font-size: 0.6rem;
+    color: red;
+}

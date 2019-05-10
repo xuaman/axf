@@ -1,0 +1,39 @@
+{% extends "base_user.html" %}
+{% load static %}
+{% block ext_css %}
+    {{ block.super }}
+
+{% endblock %}
+{% block ext_js %}
+{{ block.super }}
+    <script type="text/javascript" src="{% static 'axf/user/js/login.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+    <p>{{ message_error }}</p>
+<form class="form-horizontal" action="{% url "axf:login" %}" method="post" onsubmit="return parse_data()">
+{% csrf_token %}
+  <div class="form-group">
+    <label  for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+    <div class="col-sm-10">
+      <input name="username" type="text" class="form-control" id="inputEmail3" placeholder="请输入用户名">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+    <div class="col-sm-10">
+      <input type="password" name="passwd" class="form-control" id="password_input" placeholder="请输入密码">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-success btn-block">登录</button>
+     </div>
+     </div>
+     </form>
+     <div>
+     <span id="toregister" class="btn btn-success btn-block">注册<span>
+    </div>
+{% endblock %}

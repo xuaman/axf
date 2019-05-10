@@ -1,0 +1,41 @@
+{% extends 'base_address.html' %}
+{% load static %}
+
+
+{% block ext_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'axf/address/css/addresslist.css' %}">
+{% endblock %}
+
+{% block ext_js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'axf/address/js/addresslist.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+    <div class="address_list">
+
+        {% for address in addresslist %}
+            {% if address.s_isdefault %}
+                <span class="address_id">收货地址编号:{{ address.id }}</span>
+                <span class="default_address">默认地址</span>
+                {% else %}
+                 <span class="address_id">收货地址编号:{{ address.id }}</span>
+                <span class="set_default">设为默认地址</span>
+            {% endif %}
+
+
+            <ul>
+                <li>收&nbsp;&nbsp;货&nbsp;&nbsp;人:&nbsp;{{ address.s_name }}</li>
+                <li>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话:&nbsp;{{ address.s_phone }}</li>
+                <li>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址:&nbsp;{{ address.s_address }}</li>
+{#                <span>修改收货信息</span>#}
+            </ul>
+
+        {% endfor %}
+ <button type="button" id="add_address" class="btn btn-success btn-block">添加收货地址</button>
+    </div>
+
+
+{% endblock %}

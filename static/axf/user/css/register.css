@@ -1,0 +1,17 @@
+header{
+    height: 1.5rem;
+    background: darkorange;
+    margin-bottom: 0.3rem;
+}
+.container {
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+.has-feedback label~.form-control-feedback {
+    top: 0.96rem;
+}
+.form-horizontal .has-feedback .form-control-feedback {
+    right: 0.2rem;
+}

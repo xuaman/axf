@@ -1,0 +1,509 @@
+[2019-03-06 13:50:50,396: INFO/MainProcess] Received task: App.tasks.send_email_activate[a733ad60-d2fa-413e-bdc4-45ee50aa86b0]  
+[2019-03-28 21:46:10,981: INFO/MainProcess] Received task: App.tasks.send_email_activate[ce33454c-b45b-48c3-a11c-c49c37d79919]  
+[2019-03-31 14:20:01,297: INFO/MainProcess] Received task: App.tasks.send_email_activate[cdd6c83c-a247-4f9f-b19f-9df2faba303e]  
+[2019-04-17 20:36:00,596: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 174, in _read_from_socket
+    data = recv(self._sock, socket_read_size)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/_compat.py", line 79, in recv
+    return sock.recv(*args, **kwargs)
+TimeoutError: [Errno 110] Connection timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/client.py", line 668, in execute_command
+    return self.parse_response(connection, command_name, **options)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/client.py", line 680, in parse_response
+    response = connection.read_response()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 624, in read_response
+    response = self._parser.read_response()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 284, in read_response
+    response = self._buffer.readline()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 216, in readline
+    self._read_from_socket()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 191, in _read_from_socket
+    (e.args,))
+redis.exceptions.ConnectionError: Error while reading from socket: (110, 'Connection timed out')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 484, in connect
+    sock = self._connect()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 541, in _connect
+    raise err
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 529, in _connect
+    sock.connect(socket_address)
+TimeoutError: [Errno 110] Connection timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/celery/worker/consumer/consumer.py", line 317, in start
+    blueprint.start(self)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/celery/worker/consumer/consumer.py", line 593, in start
+    c.loop(*c.loop_args())
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/celery/worker/loops.py", line 91, in asynloop
+    next(loop)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/asynchronous/hub.py", line 293, in create_loop
+    poll_timeout = fire_timers(propagate=propagate) if scheduled else 1
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/asynchronous/hub.py", line 136, in fire_timers
+    entry()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/asynchronous/timer.py", line 68, in __call__
+    return self.fun(*self.args, **self.kwargs)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/asynchronous/timer.py", line 127, in _reschedules
+    return fun(*args, **kwargs)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/transport/redis.py", line 331, in maybe_restore_messages
+    num=channel.unacked_restore_limit,
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/transport/redis.py", line 191, in restore_visible
+    self.unacked_mutex_expire):
+  File "/usr/lib/python3.5/contextlib.py", line 59, in __enter__
+    return next(self.gen)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/transport/redis.py", line 109, in Mutex
+    i_won = client.setnx(name, lock_id)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/client.py", line 1196, in setnx
+    return self.execute_command('SETNX', name, value)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/client.py", line 673, in execute_command
+    connection.send_command(*args)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 610, in send_command
+    self.send_packed_command(self.pack_command(*args))
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 585, in send_packed_command
+    self.connect()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 489, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 110 connecting to xuaman.top:6379. Connection timed out.
+[2019-04-17 20:53:12,624: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 2.00 seconds...
+
+[2019-04-17 20:57:33,576: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 4.00 seconds...
+
+[2019-04-17 21:01:53,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 6.00 seconds...
+
+[2019-04-17 21:06:17,575: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 8.00 seconds...
+
+[2019-04-17 21:10:41,575: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 10.00 seconds...
+
+[2019-04-17 21:15:09,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 12.00 seconds...
+
+[2019-04-17 21:19:39,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 14.00 seconds...
+
+[2019-04-17 21:24:09,649: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 16.00 seconds...
+
+[2019-04-17 21:28:43,575: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 18.00 seconds...
+
+[2019-04-17 21:33:19,575: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 20.00 seconds...
+
+[2019-04-17 21:37:57,575: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 22.00 seconds...
+
+[2019-04-17 21:42:37,575: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 24.00 seconds...
+
+[2019-04-17 21:47:18,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 26.00 seconds...
+
+[2019-04-17 21:52:01,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 28.00 seconds...
+
+[2019-04-17 21:56:47,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 30.00 seconds...
+
+[2019-04-17 22:01:36,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 22:06:25,584: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 22:11:14,608: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 22:16:03,632: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 22:20:53,575: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 22:25:44,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 22:30:35,575: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 22:35:25,616: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 22:40:14,641: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 22:45:04,576: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 22:49:53,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 22:54:44,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 22:59:34,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 23:04:23,600: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 23:09:12,624: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 23:14:02,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 23:18:54,575: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 23:23:44,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 23:28:33,584: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 23:33:23,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 23:38:12,656: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 23:43:04,575: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 23:47:54,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 23:52:44,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-17 23:57:35,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 00:02:24,688: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 00:07:15,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 00:12:05,598: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 00:16:54,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 00:21:43,600: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 00:26:33,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 00:31:22,672: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 00:36:13,575: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 00:41:03,669: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 00:45:53,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 00:50:43,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 00:55:33,575: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 01:00:22,575: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 01:05:12,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 01:10:02,665: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 01:14:52,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 01:19:41,616: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 01:24:30,640: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 01:29:20,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 01:34:10,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 01:39:00,576: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 01:43:50,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 01:48:40,624: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 01:53:29,648: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 01:58:19,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 02:03:09,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 02:07:59,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 02:12:49,576: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 02:17:38,608: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 02:22:27,632: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 02:27:17,575: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 02:32:06,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 02:36:56,595: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 02:41:46,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 02:46:35,576: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 02:51:24,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 02:56:13,616: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 03:01:02,640: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 03:05:53,576: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 03:10:44,576: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 03:15:34,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 03:20:23,600: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 03:25:12,624: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 03:30:02,672: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 03:34:54,576: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 03:39:44,576: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 03:44:34,608: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 03:49:23,632: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 03:54:13,576: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 03:59:04,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 04:03:54,576: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 04:08:44,576: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 04:13:33,616: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 04:18:23,664: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 04:23:15,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 04:28:05,597: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 04:32:54,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 04:37:43,600: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 04:42:33,576: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 04:47:23,596: ERROR/MainProcess] consumer: Cannot connect to redis://xuaman.top:6379/1: Error 110 connecting to xuaman.top:6379. Connection timed out..
+Trying again in 32.00 seconds...
+
+[2019-04-18 04:52:13,576: CRITICAL/MainProcess] Unrecoverable error: OperationalError('Error 110 connecting to xuaman.top:6379. Connection timed out.',)
+Traceback (most recent call last):
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/transport/virtual/base.py", line 921, in create_channel
+    return self._avail_channels.pop()
+IndexError: pop from empty list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 484, in connect
+    sock = self._connect()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 541, in _connect
+    raise err
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 529, in _connect
+    sock.connect(socket_address)
+TimeoutError: [Errno 110] Connection timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/client.py", line 667, in execute_command
+    connection.send_command(*args)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 610, in send_command
+    self.send_packed_command(self.pack_command(*args))
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 585, in send_packed_command
+    self.connect()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 489, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 110 connecting to xuaman.top:6379. Connection timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 484, in connect
+    sock = self._connect()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 541, in _connect
+    raise err
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 529, in _connect
+    sock.connect(socket_address)
+TimeoutError: [Errno 110] Connection timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/connection.py", line 414, in _reraise_as_library_errors
+    yield
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/connection.py", line 405, in ensure_connection
+    callback)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/utils/functional.py", line 332, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/connection.py", line 261, in connect
+    return self.connection
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/connection.py", line 802, in connection
+    self._connection = self._establish_connection()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/connection.py", line 757, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/transport/virtual/base.py", line 941, in establish_connection
+    self._avail_channels.append(self.create_channel(self))
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/transport/virtual/base.py", line 923, in create_channel
+    channel = self.Channel(connection)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/transport/redis.py", line 501, in __init__
+    self.client.ping()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/client.py", line 777, in ping
+    return self.execute_command('PING')
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/client.py", line 673, in execute_command
+    connection.send_command(*args)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 610, in send_command
+    self.send_packed_command(self.pack_command(*args))
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 585, in send_packed_command
+    self.connect()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 489, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 110 connecting to xuaman.top:6379. Connection timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/celery/worker/worker.py", line 205, in start
+    self.blueprint.start(self)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/celery/bootsteps.py", line 369, in start
+    return self.obj.start()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/celery/worker/consumer/consumer.py", line 317, in start
+    blueprint.start(self)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/celery/worker/consumer/connection.py", line 23, in start
+    c.connection = c.connect()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/celery/worker/consumer/consumer.py", line 404, in connect
+    conn = self.connection_for_read(heartbeat=self.amqheartbeat)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/celery/worker/consumer/consumer.py", line 411, in connection_for_read
+    self.app.connection_for_read(heartbeat=heartbeat))
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/celery/worker/consumer/consumer.py", line 435, in ensure_connected
+    callback=maybe_shutdown,
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/connection.py", line 405, in ensure_connection
+    callback)
+  File "/usr/lib/python3.5/contextlib.py", line 77, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/connection.py", line 419, in _reraise_as_library_errors
+    sys.exc_info()[2])
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/vine/five.py", line 178, in reraise
+    raise value.with_traceback(tb)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/connection.py", line 414, in _reraise_as_library_errors
+    yield
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/connection.py", line 405, in ensure_connection
+    callback)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/utils/functional.py", line 332, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/connection.py", line 261, in connect
+    return self.connection
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/connection.py", line 802, in connection
+    self._connection = self._establish_connection()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/connection.py", line 757, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/transport/virtual/base.py", line 941, in establish_connection
+    self._avail_channels.append(self.create_channel(self))
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/transport/virtual/base.py", line 923, in create_channel
+    channel = self.Channel(connection)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/kombu/transport/redis.py", line 501, in __init__
+    self.client.ping()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/client.py", line 777, in ping
+    return self.execute_command('PING')
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/client.py", line 673, in execute_command
+    connection.send_command(*args)
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 610, in send_command
+    self.send_packed_command(self.pack_command(*args))
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 585, in send_packed_command
+    self.connect()
+  File "/root/.virtualenvs/axf3/lib/python3.5/site-packages/redis/connection.py", line 489, in connect
+    raise ConnectionError(self._error_message(e))
+kombu.exceptions.OperationalError: Error 110 connecting to xuaman.top:6379. Connection timed out.
